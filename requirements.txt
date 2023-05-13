@@ -3,3 +3,6 @@ gunicorn==20.1.0
 functions-framework
 PyMuPDF
 mammoth
+Werkzeug
+python-docx
+firebase_admin 
