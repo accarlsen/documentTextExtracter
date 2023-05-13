@@ -1,40 +1,11 @@
-import requests
 from werkzeug.utils import secure_filename
 import mammoth
 import fitz
 from flask import Flask, request
 import io
-import re
 from docx import Document
-import firebase_admin
-from firebase_admin import auth
 
-app = Flask(__name__)
-
-@app.route('/ping', methods=['GET'])
-def hello_world(request):
-    """HTTP Cloud Function.
-    Args:
-        request (flask.Request): The request object.
-        <http://flask.pocoo.org/docs/1.0/api/#flask.Request>
-    Returns:
-        The response text, or any set of values that can be turned into a
-        Response object using `make_response`
-        <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>.
-    """
-    return 'Hello, World!'
-
-
-@app.route('/extract_document', methods=['POST'])
 def extract_document(request):
-    id_token = request.headers.get('Authorization')
-    try:
-        decoded_token = auth.verify_id_token(id_token)
-        uid = decoded_token['uid']
-        # Authenticated, proceed with function logic
-    except auth.InvalidIdTokenError:
-        # Invalid token, handle unauthorized access
-        return 'Unauthorized', 401
 
     if 'file' not in request.files:
         return 'No file part in the request', 400

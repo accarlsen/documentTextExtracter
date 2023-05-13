@@ -5,4 +5,3 @@ PyMuPDF
 mammoth
 Werkzeug
 python-docx
-firebase_admin 
